@@ -192,7 +192,7 @@ class KenoRepository(private val context: Context) {
         var evaluation = loadEvaluation()
         var previousHits = loadHits()
 
-        // Ugyanahhoz a célhúzáshoz a már megjelenített 4x10 tipp változtathatatlan.
+        // A már megjelenített 4x10 tipp a célhúzás lezárásáig változtathatatlan.
         if (frozenSnapshot != null && frozenSnapshot.targetDate > latest.date) {
             validateSnapshot(frozenSnapshot)
             preferences.edit().putString("sync", LocalTime.now().withSecond(0).withNano(0).toString()).apply()
@@ -211,10 +211,8 @@ class KenoRepository(private val context: Context) {
                 saveEvaluation(candidate)
                 saveHits(previousHits)
                 appendHistory(candidate)
-                preferences.edit()
-                    .putString("last_eval", frozenSnapshot.targetDate)
-                    .putString("last_eval_hash", frozenSnapshot.hash)
-                    .apply()
+                preferences.edit().putString("last_eval", frozenSnapshot.targetDate)
+                    .putString("last_eval_hash", frozenSnapshot.hash).apply()
             }
         }
 
@@ -229,9 +227,7 @@ class KenoRepository(private val context: Context) {
             targetDate = snapshot.targetDate,
             snapshot = snapshot,
             evaluation = evaluation,
-            stats30 = loadStat(30),
-            stats100 = loadStat(100),
-            stats500 = loadStat(500),
+            stats30 = loadStat(30), stats100 = loadStat(100), stats500 = loadStat(500),
             settings = settings
         )
     }

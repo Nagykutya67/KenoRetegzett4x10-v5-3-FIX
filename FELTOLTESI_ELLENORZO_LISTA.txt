@@ -1,0 +1,12 @@
+A repository gyökerében közvetlenül ezek legyenek:
+.github/workflows/build-apk.yml
+app/
+gradle/wrapper/gradle-wrapper.properties
+.gitignore
+README.md
+build.gradle.kts
+gradle.properties
+regression_check.py
+settings.gradle.kts
+
+Nem kell gradlew vagy gradlew.bat: a workflow rögzített Gradle 8.9-et telepít.

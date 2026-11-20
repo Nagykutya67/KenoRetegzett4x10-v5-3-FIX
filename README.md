@@ -1,16 +1,13 @@
-# Kenó Rétegzett 4×10 Android v5.0
+# Kenó Rétegzett 4×10 Android v5.3 FIX
 
-Teljes hierarchia: **80 → 40 → P20/Q20 → A/B/C/D**.
+Javított, befagyasztott 4×10 snapshot és validált értékelés.
 
-- hivatalos Szerencsejáték Zrt. `keno.csv`;
-- befagyasztott snapshot és SHA-256;
-- 40, 20 és 10 szintű értékelés;
-- minden találat kézi visszaosztása, részleges elosztásnál relevancia szerinti választás;
-- 40-es rétegkvóták, időablakok, napi csere és ismétlődési súly paraméterezése;
-- minden paraméterhez kattintható magyarázat;
-- P20 elsődleges és Q20 kihívó húszas;
-- görgethető Főoldal, Tippek, Értékelés, Statisztika és Beállítások;
-- GitHub Actions APK build.
+## Ellenőrzések
+- pontosan A/B/C/D, soronként 10 különböző szám;
+- A+B=P20, C+D=Q20;
+- sorösszeg=P20+Q20=40-es összesítés;
+- kontroll: 2-0-4-4 = 10/40;
+- hibás értékelésből nincs előzmény- vagy találati visszacsatolás.
 
-## Build
-Actions → Build APK → Run workflow. Artifact: `KenoRetegzett4x10-v5-debug`.
+## APK
+GitHub: Actions → Build APK → Run workflow. Az APK a sikeres futás Artifacts részében található.
