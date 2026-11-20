@@ -24,13 +24,19 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Set up Gradle 8.9
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.9"
+
+      - name: Install required Android SDK packages
+        shell: bash
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platform-tools" \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
 
       - name: Run 4x10 regression test
         run: python3 regression_check.py
@@ -44,4 +50,3 @@ jobs:
           name: KenoRetegzett4x10-v5.3-FIX-debug
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
-
